@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Headshots — Start to Finish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black: #161414;
+    --black-soft: #1d1a19;
+    --porcelain: #F2ECE3;
+    --white: #FAF7F2;
+    --red: #E8A23B;
+    --red-bright: #FFC15D;
+    --teal: #008E97;
+    --teal-bright: #00B4BD;
+    --grey: #8C8478;
+    --grey-line: rgba(242,236,227,0.16);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--black);
+    color:var(--porcelain);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  a{ color:inherit; }
+  ::selection{ background:var(--red); color:var(--black); }
+
+  :focus-visible{
+    outline:2px solid var(--red-bright);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding-left:6vw;
+    padding-right:6vw;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background:rgba(22,20,20,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--grey-line);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6vw;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-style:italic;
+    font-weight:500;
+  }
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:14px;
+    list-style:none;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--grey);
+    transition:color 0.2s ease;
+    position:relative;
+  }
+  .nav-links a:hover{ color:var(--white); }
+  .nav-cta{
+    font-size:13px;
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:0.04em;
+    border:1px solid var(--grey-line);
+    padding:9px 18px;
+    border-radius:2px;
+    text-decoration:none;
+    transition:all 0.25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{
+    border-color:var(--red-bright);
+    background:var(--red);
+    color:var(--white);
+  }
+  .nav-toggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:110px;
+    padding-bottom:40px;
+    position:relative;
+  }
+  .hero-stack{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    text-align:center;
+  }
+  .hero-frame-block{
+    width:100%;
+    max-width:380px;
+    margin-bottom:48px;
+  }
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    max-width:640px;
+  }
+  .hero-copy .eyebrow{ margin-bottom:22px; display:block; }
+  .hero-copy h1{
+    font-size:clamp(40px, 6vw, 74px);
+    margin-bottom:26px;
+  }
+  .hero-copy h1 em{
+    font-style:italic;
+    color:var(--red-bright);
+  }
+  .hero-copy p{
+    font-size:17px;
+    line-height:1.65;
+    color:var(--grey);
+    max-width:440px;
+    margin-bottom:36px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+
+  .btn-primary{
+    background:var(--red);
+    color:var(--black);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    padding:15px 28px;
+    border-radius:2px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-primary:hover{ background:var(--red-bright); transform:translateY(-1px); }
+
+  .btn-ghost{
+    border:1px solid var(--grey-line);
+    color:var(--porcelain);
+    text-decoration:none;
+    font-size:14px;
+    padding:15px 28px;
+    border-radius:2px;
+    transition:border-color 0.25s ease;
+  }
+  .btn-ghost:hover{ border-color:var(--porcelain); }
+
+  /* Hero frame: before/after literalized */
+  .hero-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    border:1px solid var(--grey-line);
+    border-radius:2px;
+    overflow:hidden;
+    background:var(--black-soft);
+  }
+  .frame-label{
+    position:absolute;
+    top:14px; left:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--grey);
+    z-index:5;
+    background:rgba(22,20,20,0.6);
+    padding:4px 8px;
+    border-radius:2px;
+  }
+  .img-placeholder{
+    width:100%; height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--grey);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    padding:20px;
+    background:
+      repeating-linear-gradient(45deg, rgba(242,236,227,0.035) 0, rgba(242,236,227,0.035) 1px, transparent 1px, transparent 14px),
+      var(--black-soft);
+  }
+  .hero-before, .hero-after{
+    position:absolute;
+    inset:0;
+  }
+  .hero-before .img-placeholder{ filter:saturate(0.3) contrast(0.85); }
+  .hero-after{
+    clip-path:inset(0 100% 0 0);
+    transition:clip-path 1.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-frame.developed .hero-after{
+    clip-path:inset(0 0 0 0);
+  }
+  .develop-line{
+    position:absolute;
+    top:0; bottom:0;
+    left:0%;
+    width:3px;
+    background:linear-gradient(180deg, var(--red-bright), var(--teal-bright));
+    box-shadow:0 0 18px rgba(255,193,93,0.5), 0 0 18px rgba(0,180,189,0.4);
+    transition:left 1.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-frame.developed .develop-line{ left:100%; }
+
+  .hero-frame-caption{
+    margin-top:14px;
+    font-size:12px;
+    color:var(--grey);
+    display:flex;
+    justify-content:space-between;
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Portfolio Carousel ---------- */
+  .carousel-section{
+    padding-top:35px;
+    padding-bottom:45px;
+  }
+  .carousel-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .carousel-hint{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--grey);
+    letter-spacing:0.04em;
+  }
+
+  .carousel-viewport{
+    position:relative;
+    overflow:hidden;
+    cursor:grab;
+    border:1px solid var(--grey-line);
+    border-radius:2px;
+    -webkit-user-select:none;
+    user-select:none;
+    touch-action:pan-y;
+  }
+  .carousel-viewport.dragging{ cursor:grabbing; }
+
+  .carousel-track{
+    display:flex;
+    will-change:transform;
+  }
+  .carousel-track.snapping{
+    transition:transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .carousel-slide{
+    flex:0 0 auto;
+    width:min(72vw, 460px);
+    aspect-ratio:4/5;
+    position:relative;
+    border-right:1px solid var(--grey-line);
+  }
+  .carousel-slide .img-placeholder{ font-size:11px; }
+  .carousel-slide .sheet-index{
+    position:absolute;
+    bottom:10px; right:12px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    color:var(--grey);
+    background:rgba(22,20,20,0.55);
+    padding:3px 7px;
+    border-radius:2px;
+  }
+  .carousel-slide .slide-cap{
+    position:absolute;
+    top:12px; left:12px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    color:var(--teal-bright);
+    background:rgba(22,20,20,0.55);
+    padding:4px 9px;
+    border-radius:2px;
+  }
+
+  .carousel-dots{
+    display:flex;
+    justify-content:center;
+    gap:9px;
+    margin-top:26px;
+  }
+  .carousel-dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--grey-line);
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .carousel-dot:hover{ background:var(--grey); }
+  .carousel-dot.active{
+    background:var(--red);
+    transform:scale(1.25);
+  }
+
+  @media (max-width:900px){
+    .carousel-slide{ width:78vw; }
+  }
+
+  /* ---------- Studio Tour (photo panel) ---------- */
+  .studio-section{
+    padding-top:45px;
+    padding-bottom:45px;
+  }
+  .studio-grid{
+    display:flex;
+    justify-content:center;
+  }
+  .studio-grid .studio-photo-panel{
+    width:100%;
+    max-width:640px;
+  }
+
+  .studio-photo-panel{
+    border:1px solid var(--grey-line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .studio-photo-main{
+    aspect-ratio:4/3;
+    position:relative;
+  }
+  .studio-photo-main .img-placeholder{
+    transition:opacity 0.3s ease;
+  }
+  .studio-photo-tag{
+    position:absolute;
+    top:14px; left:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    color:var(--red-bright);
+    background:rgba(22,20,20,0.6);
+    padding:5px 10px;
+    border-radius:2px;
+    z-index:3;
+  }
+  .studio-thumbs{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border-top:1px solid var(--grey-line);
+  }
+  .studio-thumb{
+    aspect-ratio:1/1;
+    border-right:1px solid var(--grey-line);
+    cursor:pointer;
+    position:relative;
+    opacity:0.55;
+    transition:opacity 0.25s ease;
+  }
+  .studio-thumb:last-child{ border-right:none; }
+  .studio-thumb:hover{ opacity:0.85; }
+  .studio-thumb.active{ opacity:1; }
+  .studio-thumb.active::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border:2px solid var(--red-bright);
+    pointer-events:none;
+  }
+  .studio-thumb .img-placeholder{ font-size:9px; padding:8px; }
+  .studio-thumb .thumb-index{
+    position:absolute;
+    bottom:6px; right:7px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:9px;
+    color:var(--grey);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:60px 0; }
+  .section-head{
+    margin-bottom:64px;
+    max-width:620px;
+  }
+  .section-head .eyebrow{ margin-bottom:18px; display:block; }
+  .section-head h2{ font-size:clamp(30px,4vw,46px); margin-bottom:18px; }
+  .section-head p{ color:var(--grey); font-size:16px; line-height:1.6; }
+
+  /* ---------- Process / Filmstrip ---------- */
+  .filmstrip{
+    border-top:1px solid var(--grey-line);
+  }
+  .frame-row{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    border-bottom:1px solid var(--grey-line);
+  }
+  .frame-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--grey);
+    padding:42px 0;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  .frame-content{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:48px;
+    padding:42px 0;
+    border-left:1px solid var(--grey-line);
+    padding-left:48px;
+    align-items:center;
+  }
+  .frame-content h3{
+    font-size:26px;
+    margin-bottom:14px;
+  }
+  .frame-content p{
+    color:var(--grey);
+    font-size:15px;
+    line-height:1.65;
+    max-width:380px;
+  }
+  .frame-visual{
+    aspect-ratio:16/10;
+    border:1px solid var(--grey-line);
+    border-radius:2px;
+    overflow:hidden;
+  }
+  .frame-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--teal-bright);
+    display:block;
+    margin-bottom:10px;
+  }
+
+  /* ---------- Portfolio / Contact sheet ---------- */
+  .contact-sheet{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:2px;
+    background:var(--grey-line);
+    border:1px solid var(--grey-line);
+  }
+  .sheet-cell{
+    position:relative;
+    aspect-ratio:4/5;
+    background:var(--black-soft);
+    overflow:hidden;
+    cursor:pointer;
+  }
+  .sheet-cell .img-placeholder{
+    font-size:10px;
+    transition:opacity 0.4s ease;
+  }
+  .sheet-cell .raw{ filter:saturate(0.25) brightness(0.8); }
+  .sheet-cell .retouched{
+    position:absolute; inset:0;
+    opacity:0;
+    transition:opacity 0.4s ease;
+  }
+  .sheet-cell:hover .retouched{ opacity:1; }
+  .sheet-cell:hover .raw{ opacity:0; }
+  .sheet-index{
+    position:absolute;
+    bottom:8px; right:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    color:var(--grey);
+    z-index:5;
+  }
+  .sheet-note{
+    margin-top:24px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--grey);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .sheet-note .swatch{
+    width:10px; height:10px;
+    background:var(--teal-bright);
+    border-radius:50%;
+    display:inline-block;
+  }
+
+  /* ---------- Why / details strip ---------- */
+  .details-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--grey-line);
+    border:1px solid var(--grey-line);
+  }
+  .detail-card{
+    background:var(--black);
+    padding:40px 36px;
+  }
+  .detail-card .eyebrow{ margin-bottom:16px; display:block; }
+  .detail-card h3{ font-size:20px; margin-bottom:12px; font-weight:500; }
+  .detail-card p{ color:var(--grey); font-size:14.5px; line-height:1.6; }
+
+  /* ---------- Contact ---------- */
+  .contact-section{
+    background:var(--black-soft);
+    border-top:1px solid var(--grey-line);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:start;
+  }
+  .contact-grid > div:first-child p{
+    color:var(--grey);
+    font-size:16px;
+    line-height:1.7;
+    margin-bottom:32px;
+    max-width:420px;
+  }
+  .contact-meta{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13.5px;
+  }
+  .contact-meta a{ text-decoration:none; }
+  .contact-meta a:hover{ color:var(--red-bright); }
+  .contact-meta .label{ color:var(--grey); margin-right:10px; }
+
+  form{ display:flex; flex-direction:column; gap:22px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--grey);
+  }
+  .field input, .field select, .field textarea{
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--grey-line);
+    color:var(--porcelain);
+    font-family:'Inter', sans-serif;
+    font-size:15px;
+    padding:10px 2px;
+    transition:border-color 0.25s ease;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-bottom-color:var(--red-bright);
+  }
+  .field select{ cursor:pointer; }
+  .field select option{ background:var(--black); }
+  textarea{ resize:vertical; min-height:70px; }
+  .submit-row{
+    margin-top:10px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+  .submit-row button{
+    background:var(--red);
+    color:var(--black);
+    border:none;
+    font-family:'Inter', sans-serif;
+    font-size:14px;
+    font-weight:500;
+    padding:15px 30px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.25s ease;
+  }
+  .submit-row button:hover{ background:var(--red-bright); }
+  .submit-row span{
+    font-size:12px;
+    color:var(--grey);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:36px 0 50px;
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--grey);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- Wireframe annotation chips (remove when real content is in) ---------- */
+  .wf-note{
+    display:inline-block;
+    margin-top:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:10.5px;
+    color:var(--red-bright);
+    border:1px dashed rgba(232,162,59,0.5);
+    padding:3px 8px;
+    border-radius:2px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    .hero{ padding-top:130px; }
+    .hero-frame-block{ max-width:300px; }
+    .frame-content{ grid-template-columns:1fr; gap:24px; padding-left:24px; }
+    .frame-row{ grid-template-columns:50px 1fr; }
+    .contact-sheet{ grid-template-columns:repeat(2, 1fr); }
+    .details-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; gap:56px; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">HEADSHOT</div>
+    <ul class="nav-links">
+      <li><a href="#process">Process</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#details">Details</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a session</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-stack">
+      <div class="hero-frame-block">
+        <div class="hero-frame" id="heroFrame">
+          <span class="frame-label">BEFORE AND AFTER</span>
+          <div class="hero-before">
+            <div class="img-placeholder">[ PLACEHOLDER<br>raw / unedited shot ]</div>
+          </div>
+          <div class="hero-after">
+            <div class="img-placeholder">[ PLACEHOLDER<br>final retouched headshot ]</div>
+          </div>
+          <div class="develop-line"></div>
+        </div>
+        <div class="hero-frame-caption">
+          <span>HOVER TO COMPARE</span>
+          <span>STUDIO SESSION</span>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <span class="eyebrow">Headshot photography · Studio sessions</span>
+        <h1>Professional headshots,<br>start to finish.</h1>
+        <p>Planning, shooting, and delivery — everything you need for a new headshot.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PORTFOLIO CAROUSEL ============ -->
+<div class="wrap">
+  <section class="carousel-section">
+    <div class="carousel-head">
+      <span class="eyebrow">Portfolio</span>
+      <span class="carousel-hint">SWIPE TO BROWSE</span>
+    </div>
+
+    <div class="carousel-viewport" id="carouselViewport" tabindex="0" role="region" aria-label="Portfolio image carousel" aria-roledescription="carousel">
+      <div class="carousel-track" id="carouselTrack"></div>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+    <span id="carouselLive" aria-live="polite" class="sr-only" style="position:absolute; width:1px; height:1px; overflow:hidden;"></span>
+  </section>
+</div>
+
+<!-- ============ PROCESS ============ -->
+<div class="wrap">
+  <section id="process">
+    <div class="section-head">
+      <span class="eyebrow">The process</span>
+      <h2>Three steps, start to finish.</h2>
+      <p>Planning, the studio session, and delivery — a simple process from beginning to end.</p>
+    </div>
+
+    <div class="filmstrip">
+      <div class="frame-row">
+        <div class="frame-num">01</div>
+        <div class="frame-content">
+          <div class="frame-visual">
+            <div class="img-placeholder">[ PLACEHOLDER<br>mood board / reference call photo ]</div>
+          </div>
+          <div>
+            <span class="frame-tag">BEFORE THE SHOOT</span>
+            <h3>Plan the shoot</h3>
+            <p>A short call to go over the purpose of the headshot, the look you'd like, and wardrobe options ahead of the session.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame-row">
+        <div class="frame-num">02</div>
+        <div class="frame-content">
+          <div class="frame-visual">
+            <div class="img-placeholder">[ PLACEHOLDER<br>studio / lighting setup photo ]</div>
+          </div>
+          <div>
+            <span class="frame-tag">IN THE STUDIO</span>
+            <h3>Shoot in studio</h3>
+            <p>A guided studio session with lighting and posing handled for you, including a few outfit and expression changes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame-row">
+        <div class="frame-num">03</div>
+        <div class="frame-content">
+          <div class="frame-visual">
+            <div class="img-placeholder">[ PLACEHOLDER<br>before/after retouch comparison ]</div>
+          </div>
+          <div>
+            <span class="frame-tag">AFTER THE SHOOT</span>
+            <h3>Edit and deliver</h3>
+            <p>The final images are retouched and delivered as high-resolution files, ready for LinkedIn, social media, or print.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PORTFOLIO ============ -->
+<div class="wrap">
+  <section id="work">
+    <div class="section-head">
+      <span class="eyebrow">The editing process</span>
+      <h2>Before and after retouching.</h2>
+      <p>A look at the editing process. Hover any image to compare the raw capture with the final retouched version.</p>
+    </div>
+
+    <div class="contact-sheet" id="contactSheet">
+      <!-- 8 placeholder cells generated by JS below -->
+    </div>
+
+    <div class="sheet-note"><span class="swatch"></span> Hover an image to compare before and after</div>
+  </section>
+</div>
+
+<!-- ============ DETAILS ============ -->
+<div class="wrap">
+  <section id="details">
+    <div class="section-head">
+      <span class="eyebrow">The details</span>
+      <h2>What's included.</h2>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-card">
+        <span class="eyebrow">DURATION</span>
+        <h3>45–60 min session</h3>
+        <p>Enough time in studio for a couple of outfit and expression changes.</p>
+      </div>
+      <div class="detail-card">
+        <span class="eyebrow">DELIVERY</span>
+        <h3>3–5 business days</h3>
+        <p>Retouched, high-resolution images delivered digitally, sized for LinkedIn, social media, or print.</p>
+      </div>
+      <div class="detail-card">
+        <span class="eyebrow">WARDROBE</span>
+        <h3>Bring 2–3 options</h3>
+        <p>Wardrobe is discussed during the planning call, ahead of the session.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ STUDIO TOUR ============ -->
+<div class="wrap">
+  <section class="studio-section">
+    <div class="section-head">
+      <span class="eyebrow">The studio</span>
+      <h2>On Location.</h2>
+      <p>A look at the studio space, inside and out.</p>
+    </div>
+
+    <div class="studio-grid">
+      <!-- Synced photo panel -->
+      <div class="studio-photo-panel">
+        <div class="studio-photo-main" id="studioPhotoMain">
+          <span class="studio-photo-tag" id="studioPhotoTag">01 / INTERIOR</span>
+          <div class="img-placeholder" id="studioPhotoImg">[ PLACEHOLDER<br>interior view 1 ]</div>
+        </div>
+        <div class="studio-thumbs" id="studioThumbs">
+          <div class="studio-thumb active" data-zone="interior1">
+            <div class="img-placeholder">[ INTERIOR<br>VIEW 1 ]</div>
+            <span class="thumb-index">01</span>
+          </div>
+          <div class="studio-thumb" data-zone="interior2">
+            <div class="img-placeholder">[ INTERIOR<br>VIEW 2 ]</div>
+            <span class="thumb-index">02</span>
+          </div>
+          <div class="studio-thumb" data-zone="exterior">
+            <div class="img-placeholder">[ EXTERIOR ]</div>
+            <span class="thumb-index">03</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="contact-section">
+  <div class="wrap">
+    <section id="contact" style="padding-top:50px; padding-bottom:50px;">
+      <div class="contact-grid">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Book a session.</h2>
+          <p>Share a few details about the headshot and your availability, and a follow-up will be sent within a day to confirm the planning call and studio time.</p>
+          <div class="contact-meta">
+            <div><span class="label">EMAIL</span><a href="mailto:hello@yourstudio.com">hello@yourstudio.com</a></div>
+            <div><span class="label">PHONE</span><a href="tel:+10000000000">+1 (000) 000-0000</a></div>
+            <div><span class="label">STUDIO</span><span>Your City, ST — by appointment</span></div>
+          </div>
+        </div>
+
+        <div>
+          <form id="bookingForm">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div class="field">
+              <label for="purpose">What's it for?</label>
+              <select id="purpose" name="purpose">
+                <option>LinkedIn / professional profile</option>
+                <option>Social media</option>
+                <option>Acting / talent</option>
+                <option>Personal branding</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="dates">Preferred dates</label>
+              <input type="text" id="dates" name="dates" placeholder="e.g. any weekday next week">
+            </div>
+            <div class="field">
+              <label for="notes">Anything else?</label>
+              <textarea id="notes" name="notes" placeholder="Optional — tone, deadline, references"></textarea>
+            </div>
+            <div class="submit-row">
+              <button type="submit">Send request</button>
+              <span id="formStatus">A request, not a booking — confirmed by reply</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <span>© 2026 Frame · Form Studio</span>
+      <span>WIREFRAME DRAFT — placeholders marked in dashed yellow</span>
+      <span>Headshot photography</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hero develop interaction (hover or tap)
+  const heroFrame = document.getElementById('heroFrame');
+  const toggleDevelop = () => heroFrame.classList.toggle('developed');
+  heroFrame.addEventListener('mouseenter', () => heroFrame.classList.add('developed'));
+  heroFrame.addEventListener('mouseleave', () => heroFrame.classList.remove('developed'));
+  heroFrame.addEventListener('click', toggleDevelop); // touch devices
+
+  // ---------- Studio Tour (thumbnail ↔ photo sync) ----------
+  (function(){
+    const zoneData = {
+      interior1: { label: '01 / INTERIOR', placeholder: '[ PLACEHOLDER<br>interior view 1 ]' },
+      interior2: { label: '02 / INTERIOR', placeholder: '[ PLACEHOLDER<br>interior view 2 ]' },
+      exterior:  { label: '03 / EXTERIOR', placeholder: '[ PLACEHOLDER<br>exterior view ]' }
+    };
+
+    const photoTag = document.getElementById('studioPhotoTag');
+    const photoImg = document.getElementById('studioPhotoImg');
+    const thumbs = document.querySelectorAll('.studio-thumb');
+
+    function setActiveZone(zone){
+      thumbs.forEach(t => t.classList.toggle('active', t.dataset.zone === zone));
+      const data = zoneData[zone];
+      photoTag.textContent = data.label;
+      photoImg.innerHTML = data.placeholder;
+    }
+
+    thumbs.forEach(t => {
+      t.addEventListener('click', () => setActiveZone(t.dataset.zone));
+    });
+
+    setActiveZone('interior1');
+  })();
+
+  // Build contact sheet placeholders
+  const sheet = document.getElementById('contactSheet');
+  const count = 8;
+  for(let i=1; i<=count; i++){
+    const cell = document.createElement('div');
+    cell.className = 'sheet-cell';
+    cell.innerHTML = `
+      <div class="img-placeholder raw">[ RAW ${String(i).padStart(2,'0')} ]</div>
+      <div class="img-placeholder retouched">[ RETOUCHED ${String(i).padStart(2,'0')} ]</div>
+      <span class="sheet-index">${String(i).padStart(2,'0')}</span>
+    `;
+    sheet.appendChild(cell);
+  }
+
+  // ---------- Portfolio Carousel ----------
+  (function(){
+    const viewport = document.getElementById('carouselViewport');
+    const track = document.getElementById('carouselTrack');
+    const dotsWrap = document.getElementById('carouselDots');
+    const live = document.getElementById('carouselLive');
+    const SLIDE_COUNT = 9;
+
+    // Build slides
+    for(let i=1; i<=SLIDE_COUNT; i++){
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      slide.innerHTML = `
+        <div class="img-placeholder">[ PLACEHOLDER<br>portfolio image ${String(i).padStart(2,'0')} ]</div>
+        <span class="slide-cap">SESSION ${String(i).padStart(2,'0')}</span>
+        <span class="sheet-index">${i} / ${SLIDE_COUNT}</span>
+      `;
+      track.appendChild(slide);
+    }
+
+    // Build dots
+    const dots = [];
+    for(let i=0; i<SLIDE_COUNT; i++){
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Go to image ' + (i+1));
+      dot.addEventListener('click', () => goTo(i, true));
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    }
+
+    let index = 0;
+    let slideWidth = 0;
+    let autoplayTimer = null;
+    let resumeTimer = null;
+    const AUTOPLAY_MS = 4000;
+    const RESUME_DELAY_MS = 3500;
+
+    function measure(){
+      const slide = track.querySelector('.carousel-slide');
+      const gap = 0; // border acts as separation, no flex gap in use
+      slideWidth = slide.getBoundingClientRect().width + gap;
+    }
+
+    function render(withTransition){
+      track.classList.toggle('snapping', withTransition !== false);
+      track.style.transform = `translateX(${-index * slideWidth}px)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function goTo(i, userInitiated){
+      index = ((i % SLIDE_COUNT) + SLIDE_COUNT) % SLIDE_COUNT;
+      render(true);
+      live.textContent = `Showing image ${index+1} of ${SLIDE_COUNT}`;
+      if(userInitiated) restartAutoplayAfterPause();
+    }
+
+    function next(){ goTo(index + 1); }
+
+    function startAutoplay(){
+      stopAutoplay();
+      autoplayTimer = setInterval(next, AUTOPLAY_MS);
+    }
+    function stopAutoplay(){
+      if(autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
+    }
+    function restartAutoplayAfterPause(){
+      stopAutoplay();
+      if(resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(startAutoplay, RESUME_DELAY_MS);
+    }
+
+    // Pointer-based drag/swipe (mouse + touch unified)
+    let dragging = false;
+    let startX = 0;
+    let startTranslate = 0;
+    let currentTranslate = 0;
+
+    function pointerDown(e){
+      dragging = true;
+      viewport.classList.add('dragging');
+      startX = (e.touches ? e.touches[0].clientX : e.clientX);
+      startTranslate = -index * slideWidth;
+      track.classList.remove('snapping');
+      stopAutoplay();
+      if(resumeTimer) clearTimeout(resumeTimer);
+    }
+
+    function pointerMove(e){
+      if(!dragging) return;
+      const x = (e.touches ? e.touches[0].clientX : e.clientX);
+      const delta = x - startX;
+      currentTranslate = startTranslate + delta;
+      track.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function pointerUp(e){
+      if(!dragging) return;
+      dragging = false;
+      viewport.classList.remove('dragging');
+      const x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX);
+      const delta = x - startX;
+      const threshold = slideWidth * 0.18;
+      if(delta < -threshold) index = Math.min(index + 1, SLIDE_COUNT - 1);
+      else if(delta > threshold) index = Math.max(index - 1, 0);
+      render(true);
+      restartAutoplayAfterPause();
+    }
+
+    viewport.addEventListener('mousedown', pointerDown);
+    window.addEventListener('mousemove', pointerMove);
+    window.addEventListener('mouseup', pointerUp);
+    viewport.addEventListener('touchstart', pointerDown, {passive:true});
+    viewport.addEventListener('touchmove', pointerMove, {passive:true});
+    viewport.addEventListener('touchend', pointerUp);
+
+    // Hover pause (desktop courtesy, in addition to drag-based pause)
+    viewport.addEventListener('mouseenter', () => { stopAutoplay(); if(resumeTimer) clearTimeout(resumeTimer); });
+    viewport.addEventListener('mouseleave', () => { if(!dragging) restartAutoplayAfterPause(); });
+
+    // Keyboard support
+    viewport.addEventListener('keydown', (e) => {
+      if(e.key === 'ArrowRight'){ goTo(index + 1, true); }
+      else if(e.key === 'ArrowLeft'){ goTo(index - 1, true); }
+    });
+
+    // Resize handling
+    window.addEventListener('resize', () => { measure(); render(false); });
+
+    // Init
+    measure();
+    render(false);
+    startAutoplay();
+  })();
+
+  // Simple form handling (placeholder — wire to real backend / mail service later)
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = 'This is a wireframe — form submissions are not yet connected.';
+    status.style.color = '#E8A23B';
+  });
+</script>
+
+</body>
+</html>
